@@ -29,6 +29,17 @@ body {
     z-index: 999;
 }
 
+.navbar2{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
 .navbar__container{
     display: flex;
     justify-content: space-between;
@@ -77,6 +88,18 @@ body {
     transition: all 0.3s ease;
 }
 
+.navbar__links2{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    text-decoration:underline;
+    height: 100%;
+    transition: all 0.3s ease;
+    font-size: 22px;
+}
+
 .navbar__btn{
     display: flex;
     justify-content: center;
@@ -105,6 +128,11 @@ body {
 }
 
 .navbar__links:hover{
+    color: #9518fc;
+    transition: all 0.3s ease;
+}
+
+.navbar__links2:hover{
     color: #9518fc;
     transition: all 0.3s ease;
 }

@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <meta name="author"             content="Alan G. Labouseur" />
+   <link rel="stylesheet" href="tsos.css" type="text/css" media="screen" />
+   <title>
+      brOS - a browser-based virtual Operating System in TypeScript
+   </title>
+
+   <!-- Globals CONSTANTS and _Variables. Must included be first. -->
+   <script type="text/javascript" src="distrib/globals.js"></script>
+
+   <!-- Host (Virtual Machine / Hardware Simulation) Routines -->
+   <script type="text/javascript" src="distrib/host/control.js"></script>
+   <script type="text/javascript" src="distrib/host/devices.js"></script>
+   <script type="text/javascript" src="distrib/host/memory.js"></script>
+   <script type="text/javascript" src="distrib/host/ma.js"></script>
+   <script type="text/javascript" src="distrib/host/cpu.js"></script>
+
+   <!-- Virtual OS Routines: Make sure Kernel code is last, since it needs those above it. -->
+   <script type="text/javascript" src="distrib/os/interrupt.js"></script>
+   <script type="text/javascript" src="distrib/os/canvastext.js"></script>
+   <script type="text/javascript" src="distrib/os/console.js"></script>
+   <script type="text/javascript" src="distrib/os/deviceDriver.js"></script>
+   <script type="text/javascript" src="distrib/os/deviceDriverKeyboard.js"></script>
+   <script type="text/javascript" src="distrib/os/deviceDriverDiskSystem.js"></script>
+   <script type="text/javascript" src="distrib/os/cpuScheduler.js"></script>
+   <script type="text/javascript" src="distrib/os/cpuDispatcher.js"></script>
+   <script type="text/javascript" src="distrib/os/queue.js"></script>
+   <script type="text/javascript" src="distrib/os/mm.js"></script>
+   <script type="text/javascript" src="distrib/os/pcb.js"></script>
+   <script type="text/javascript" src="distrib/os/shell.js"></script>
+   <script type="text/javascript" src="distrib/os/shellCommand.js"></script>
+   <script type="text/javascript" src="distrib/os/userCommand.js"></script>
+   <script type="text/javascript" src="distrib/os/kernel.js"></script>
+
+   <!-- Other Routines -->
+   <script type="text/javascript" src="distrib/utils.js"></script>
+   <!-- Uncomment the line below to enable GLaDOS testing. -->
+   <!--<script type="text/javascript" src="http://alanclasses.github.io/TSOS/test/glados-ip4.js"></script>-->
+   <script type="text/javascript" src="test/test.js"></script>
+
+   <!-- Tables will have alternating colors to differentiate rows -->
+   <style>
+      tr:nth-child(odd) {
+         background-color:lightgray;
+      }
+      td{
+         padding-left: 2px;
+         padding-right: 2px;
+         width: max-content; 
+         border-left: 1px solid;
+      }
+      tr{
+         text-align: center;
+      }
+   </style>
+
+</head>
+
+<body onload="onDocumentLoad()">
+<div id= "logoImage">
+   <img src="./distrib/images/logoJake.png" alt="Jake Logo" width="200" height="150" class="center">
+   <p><hr></p>
+</div>
+<p class = "headerText" style="clear:both;">
+   brOS
+</p>
+
+<div id="divMain" style="width:100%;" class = "scroll">
+   <div id="divButtonBar" style="padding-left: 30%; padding-bottom: 20px;">
+      <input type="button"
+             id = "btnStartOS"
+             name="brnStartOS"
+             class="normal_button"
+             value="Start"
+             tabindex="0"
+             onclick="TSOS.Control.hostBtnStartOS_click(this);">
+
+      <input type="button"
+             id = "btnHaltOS"
+             name="brnHaltOS"
+             class="normal_button"
+             disabled="disabled"
+             value="Halt"
+             tabindex="1"
+             onclick="TSOS.Control.hostBtnHaltOS_click(this);">
+
+      <input type="button"
+             id = "btnReset"
+             name="brnReset"
+             class="normal_button"
+             disabled="disabled"
+             value="Reset"
+             tabindex="2"
+             onclick="TSOS.Control.hostBtnReset_click(this);">
+
+      <input type="button"
+             id = "btnSingStep"
+             name="brnSingStep"
+             class="normal_button"
+             value="Single Step"
+             tabindex="3"
+             onclick="TSOS.Control.hostBtnSingleStep_click(this);">
+
+      <input type="button"
+             id = "btnStep"
+             name="brnStep"
+             class="normal_button"
+             disabled="disabled"
+             value="Step"
+             tabindex="4"
+             onclick="TSOS.Control.hostBtnStep_click(this);">
+   </div>
+
+<div id = "divSub" style = "float:left; padding-left: 20px; padding-top: 300px">
+   
+   <div id = "divMemory">
+      <label>
+         Memory
+      </label>
+      <div id = "divMemTable" style = "height:150px; overflow:auto; background-color:aliceblue; width: 320px;">
+         <table name = "memory"
+            id = "memory" 
+         ></table>
+      </div>
+   </div>
+
+   <div id = "divCpu">
+      <label>
+         CPU
+      </label>
+      <div id = "divCpuTable" style = "height:auto; overflow:auto; background-color:aliceblue; width: 320px;">
+         <table name = "cpu"
+            id = "cpu" 
+         ></table>
+      </div>
+   </div>
+</div>
+
+   <!-- <div id="divButtonBar" style="margin:4px;">
+      <input type="button"
+             id = "btnStartOS"
+             name="brnStartOS"
+             class="normal_button"
+             value="Start"
+             tabindex="0"
+             onclick="TSOS.Control.hostBtnStartOS_click(this);">
+
+      <input type="button"
+             id = "btnHaltOS"
+             name="brnHaltOS"
+             class="normal_button"
+             disabled="disabled"
+             value="Halt"
+             tabindex="1"
+             onclick="TSOS.Control.hostBtnHaltOS_click(this);">
+
+      <input type="button"
+             id = "btnReset"
+             name="brnReset"
+             class="normal_button"
+             disabled="disabled"
+             value="Reset"
+             tabindex="2"
+             onclick="TSOS.Control.hostBtnReset_click(this);">
+
+      <input type="button"
+             id = "btnSingStep"
+             name="brnSingStep"
+             class="normal_button"
+             value="Single Step"
+             tabindex="3"
+             onclick="TSOS.Control.hostBtnSingleStep_click(this);">
+
+      <input type="button"
+             id = "btnStep"
+             name="brnStep"
+             class="normal_button"
+             disabled="disabled"
+             value="Step"
+             tabindex="4"
+             onclick="TSOS.Control.hostBtnStep_click(this);">
+   </div> -->
+
+   <div id="divConsole" style="width:500px; height:500px; float:left; padding-left: 90px;">
+      <canvas id="display"
+              width="600px"
+              height="600px"
+              tabindex="3">
+      </canvas>
+   </div>
+
+   <div id="divLog" style="padding-left: 120px; float: left;">
+      <label>
+         Host Log | Date: <span id='date'></span> <br> Status: <span id='status'></span> | Single Step Mode: <span id = 'stepMode'></span>
+         <br>
+         <textarea name="taHostLog"
+                   id  ="taHostLog"
+                   rows="26"
+                   cols="48"
+         ></textarea>
+      </label>
+   </div>
+
+   <div id="divUserProgramInput" style="padding-left: 120px; float: left;">
+      <label>
+         User Program Input
+         <br>
+         <textarea name="taProgramInput"
+                   id  ="taProgramInput"
+                   rows="8"
+                   cols="48"
+         ></textarea>
+      </label>
+   </div>
+</div>
+
+   <!-- <div id = "divMemory">
+      <label>
+         Memory
+      </label>
+      <div id = "divMemTable" style = "height:150px; overflow:auto; background-color:aliceblue; width: 320px">
+         <table name = "memory"
+            id = "memory" 
+         ></table>
+      </div>
+   </div>
+
+   <div id = "divCpu">
+      <label>
+         CPU
+      </label>
+      <div id = "divCpuTable" style = "height:auto; overflow:auto; background-color:aliceblue; width: 320px">
+         <table name = "cpu"
+            id = "cpu" 
+         ></table>
+      </div>
+   </div>
+   -->
+
+   <div id = "divSub2">
+   <div id = "divPcb" style = "float: left; padding-top: 20px">
+      <label>
+         PCB
+      </label>
+      <div id = "divPcbTable" style = "height:120px; overflow:auto; background-color:aliceblue; width: 700px;">
+         <table name = "pcb"
+            id = "pcb" 
+         ></table>
+      </div>
+   </div>
+
+   <div id = "divDS" style = "float: left; padding-left: 20px; padding-top: 20px">
+      <label>
+         Disk
+      </label>
+      <div id = "divDsTable" style = "height:200px; overflow:auto; background-color:aliceblue; width: 750px;">
+         <table name = "ds"
+            id = "ds"
+         ></table>
+      </div>
+   </div>
+</div>
+
+<p class="footerText" style="clear:both;">
+   <br>
+   Copyright &copy; 2008 - 2019 No Rights Reserved.
+   <br>
+   Reproduction is inhibited without the express written consent of
+   Ted Codd, Stevie Ray Vaughan, and Ian Fleming.
+</p>
+
+</body>
+</html>

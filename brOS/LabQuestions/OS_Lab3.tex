@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CMPT 424
+% Lab 3
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from: http://www.LaTeXTemplates.com
+% Original author: % Frits Wenneker (http://www.howtotex.com)
+% License: CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Modified by Alan G. Labouseur  - alan@labouseur.com
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper, 10pt]{article} 
+
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{graphicx}
+\usepackage[lined,linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage{listings}
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\usepackage{lastpage}
+\usepackage{url}
+
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{page \thepage\ of \pageref{LastPage}} % Page numbering for center footer
+\fancyfoot[R]{}
+
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+   \normalfont\normalsize 
+   \textsc{CMPT 424 - Fall 2022 - Dr. Labouseur} \\[10pt] % Header stuff.
+   \horrule{0.5pt} \\[0.25cm] 	% Top horizontal rule
+   \huge Lab 3 \\   % Assignment title
+   \horrule{0.5pt} \\[0.25cm] 	% Bottom horizontal rule
+}
+
+\author{Jake Vissicchio \\ \normalsize Jake.Vissicchio1@Marist.edu}
+
+\date{\normalsize\today} 	% Today's date.
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%   CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+% - -- -  - -- -  - -- -  -
+\section{Questions}
+\subsection{Explain the difference between internal and external fragmentation}
+In internal fragmentation, larger fixed-size memory space is allocated to fit the requested memory, while in external fragmentation, memory space will vary to satisfy the requested memory.
+\\
+\subsection{Given 5 memory partitions of 100KB, 500KB, 200KB, 300KB, and 600KB (in that order), how would optimal, first fit, best fit, and worst fit algorithms place processes of 212KB, 417KB, 112KB, and 426KB (in that order)}
+Optimal: \\
+212KB in 300KB Partition \\
+417KB in 500KB Partition \\ 
+112KB in 600KB Partition \\
+426KB in 600KB Partition \\
+\\
+First-Fit: \\
+212KB in 500KB Partition \\
+417KB in 600KB Partition \\ 
+112KB in 500KB Partition \\ 
+426KB doesn't fit in any Partitions \\
+ \\
+Best-Fit: \\
+212KB in 300KB Partition \\
+417KB in 500KB Partition \\ 
+112KB in 200KB Partition \\
+426KB in 600KB Partition \\
+\\
+Worst-Fit: \\
+212KB in 600KB Partition \\
+417KB in 500KB Partition \\
+112KB in 600KB Partition \\
+426KB doesn't fit in any Partitions \\
+\\
+
+\noindent
+
+
+\end{document}

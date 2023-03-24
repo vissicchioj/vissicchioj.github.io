@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <!--Help from https://www.youtube.com/watch?v=3-2Pj5hxwrw-->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width = device-width, initial - scale = 1.0">
+        <link rel = "stylesheet" href = "styles.css">
+        <title>JV's Website</title>
+        </head>
+        <body>
+            <!--Navbar-->
+            <nav class="navbar">
+                <div class = "navbar__container">
+                    <a href = "aboutme.html" id= "navbar__logo">
+                        Jake Vissicchio
+                    </a>
+                    <div class="navbar__toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <ul class="navbar__menu">
+                        <li class="navbar__item">
+                            <a href="aboutme.html" class="navbar__links" id="home-page">
+                                Home
+                            </a>
+                        </li>
+                        <li class="navbar__item">
+                            <a href="resume.html" class="navbar__links" id="resume-page">
+                                Resume
+                            </a>
+                        </li>
+                        <li class="navbar__item">
+                            <a href="experience.html" class="navbar__links" id="resume-page">
+                                Experience
+                            </a>
+                        </li>
+                        <li class="navbar__item">
+                            <a href="projects.html" class="navbar__links" id="projects-page">
+                                Projects
+                            </a>
+                        </li>
+                        <!-- <li class="navbar__btn">
+                            <a href="#sign-up" class="button" id="signup">
+                                Sign Up
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+            </nav>
+            <script src = "app.js"></script>
+            <div id = "divMain" style="width:100%; height: auto;" class = "scroll">
+                <div id = "divProjects" style="width:100%; height: 150px;  margin: auto; text-align: center; background-color: #e4d0a0; border-left: solid black; border-right: solid black;">
+                    <p style="font-size: 24pt;
+                    font-weight: normal;
+                    font-style: bold; padding-top: 16px;">
+                        Full Project GitHub Repository
+                    </p>
+                    <br>
+                    <p style = "padding-left: 20%; padding-right: 20%; font-size: 16pt;">
+                        <div class = "navbar2">
+                        <a href = "https://github.com/vissicchioj/projects" target="_blank" rel="noopener noreferrer" class="navbar__links2" id="githubrepo" >
+                            Projects
+                        </a>
+                        </div>
+                    </p>
+                </div>
+                <div id = "divFoxLift" style="width:100%; height: 100%;  margin: auto; background-color: #E7E0EF; border: solid black;">
+                    <p style="font-size: 24pt;
+                    font-weight: normal;
+                    font-style: bold; padding-top: 16px; text-align: center;">
+                        FoxLift
+                    </p>
+                    <br>
+                    <p style = "padding-left: 20%; padding-right: 20%; font-size: 16pt;">
+                        FoxLift was a senior capstone project that involved developing a ridesharing app for use by Marist Students with a team of five. 
+                        This app was developed using React Native, ExpoGo, Google Places API, NodeJS, and MySQL.
+                        <br>
+                        <br>
+                        I focused on the frontend design as well as the implementation of signing in using Google authentication and 
+                        the chat/messaging screen.
+                        I learned a lot regarding mobile app development and frontend development. 
+                        <br>
+                        <br>
+                        Outside of the technical aspects I also learned teamwork and communication skills since I had to work directly
+                        with my group member that handled the backend of the app. 
+                        <br>
+                        <br>
+                        Below you can check out the GitHub repository for this app as well as a link to my repository that shows video demos of the app:
+                        <br>
+                        <div class = "navbar2">
+                        <a href = "https://github.com/JonathanEisenman/RideSharingApp" target="_blank" rel="noopener noreferrer" class="navbar__links2" id="githubrepo" >
+                            Repository
+                        </a>
+                        <br>
+                        <a href = "https://github.com/vissicchioj/projects/tree/main/FoxLift/Demos" target="_blank" rel="noopener noreferrer" class="navbar__links2" id="githubrepo" >
+                            Demos
+                        </a>
+                        </div>
+                        <br>
+                    </p>
+                </div>
+                <div id = "divOS" style="width:100%; height: 100%;  margin: auto; background-color: #e4d0a0; border-left: solid black; border-right: solid black;">
+                    <p style="font-size: 24pt;
+                    font-weight: normal;
+                    font-style: bold; padding-top: 16px; text-align: center;">
+                        brOS
+                    </p>
+                    <br>
+                    <p style = "padding-left: 20%; padding-right: 20%; font-size: 16pt;">
+                        Using knowledge of Operating Systems, we were tasked to create my own browser-based Operating System using TypeScript. 
+                        This included creating shell commands, adding the ability to load and execute multiple user programs using 6502 op codes, and implementing a local file system.
+                        <br>
+                        <br>
+                        Below you can use brOS or check out the GitHub repository:
+                        <br>
+                        <div class = "navbar2">
+                        <a href = "brOS/index.html" target="_blank" rel="noopener noreferrer" class="navbar__links2" id="githubrepo" >
+                            brOS
+                        </a>
+                        <br>
+                        <a href = "https://github.com/vissicchioj/OperatingSystems" target="_blank" rel="noopener noreferrer" class="navbar__links2" id="githubrepo">
+                            Repository
+                        </a>
+                    </div>
+                        <br>
+                    </p>
+                </div>
+                <div id= "divFooter" style="margin: auto; text-align: center;">
+                    <p><hr></p>
+                    <p>@2023 Jake Vissicchio</p>
+                </div>
+            </div>
+        </body>
+</html>
