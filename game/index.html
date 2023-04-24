@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <meta name="author"             content="Jake Vissicchio" />
+   <link rel="stylesheet" href="./styles.css" type="text/css" media="screen" />
+   <title>
+      IGN Rating Game
+   </title>
+
+   <!-- Globals CONSTANTS and _Variables. Must included be first. -->
+   <script type="text/javascript" src="distrib/globals.js"></script>
+   <script type="text/javascript" src="distrib/script.js"></script>
+   <script type="text/javascript" src="distrib/games.js"></script>
+
+</head>
+
+<body onload="onDocumentLoad()">
+<div id= "logoImage">
+   <img src="../images/logoJake.png" alt="Jake Logo" width="200" height="150" class="center">
+   <p><hr></p>
+</div>
+<p class = "headerText" style="clear:both;" id = "helloMessage">
+   <!--Peak or Mid-->
+</p>
+<p style="text-align: center;">
+   <input type="button"
+             id = "btnStart"
+             name="brnStart"
+             class="normal_button"
+             value="Start"
+             tabindex="0"
+             onclick="POM.Game.btnStart_click(this);">
+</p>
+
+<div id="divLeft" style="width:45%; float: left; text-align: center;">
+   <label>
+      <span id='game1' ></span> 
+      <p id = rating1></p>
+   </label>
+</div>
+
+<div id = "divButtons" style = "width:10%; float:left; text-align: center; padding-top: 6%;">
+
+      <input type="button"
+             id = "btnGr"
+             name="brnGr"
+             class="normal_button"
+             value=">"
+             tabindex="1"
+             style="visibility: hidden;"
+             onclick="POM.Game.btnGr_click(this);">
+      <input type="button"
+             id = "btnLs"
+             name="brnLs"
+             class="normal_button"
+             value="<"
+             tabindex="2"
+             style="visibility:hidden;"
+             onclick="POM.Game.btnLs_click(this);">
+      <input type="button"
+             id = "btnNext"
+             name="brnNext"
+             class="normal_button"
+             value="Next"
+             tabindex="3"
+             style="visibility:hidden;"
+             onclick="POM.Game.btnNext_click(this);">
+      <input type="button"
+             id = "btnRestart"
+             name="brnRestart"
+             class="normal_button"
+             value="Restart"
+             tabindex="1"
+             style="visibility:hidden;"
+             onclick="POM.Game.btnRestart_click(this);">
+      <p id = correct>Correct Answers: 0</p>
+
+</div>
+
+<div id = "divRight" style = "width:45%; float:left; text-align: center;">
+   <label>
+      <span id='game2'></span> 
+      <p id = rating2></p>
+   </label>
+</div>
+
+
+<p class="footerText" style="clear:both;">
+    <p><hr></p>
+    <p>@2023 Jake Vissicchio</p>
+</p>
+
+</body>
+</html>
