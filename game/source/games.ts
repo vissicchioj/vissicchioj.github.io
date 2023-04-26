@@ -9,6 +9,7 @@ module POM
         public currGame1: string[];
         public currGame2: string[];
         public correctCounter: number = 0;
+        public highScore: number = 0;
         //public startGame: boolean = false;
         public img1 = new Image(300, 300); // width, height
         public img2 = new Image(300, 300); // width, height
@@ -46,7 +47,7 @@ module POM
                 ["Banjo-Kazooie", "9.6", "./images/banjo.png"],
                 ["Billy Hatcher", "7.7", "./images/billyhatcher.png"],
                 ["Sonic Adventure DX Director's Cut", "5.0", "./images/sonicadventure.png"],
-                ["Ultimate Marvel vs. Capcom 3", "8.5", "./images/umvc3.png"],
+                ["Ultimate Marvel vs. Capcom 3", "8.5", "./images/umvc.png"],
                 ["Hey You, Pikachu!", "6.0", "./images/heyyoupikachu.png"],
                 ["Pokémon Mystery Dungeon: Explorers of Sky", "4.8", "./images/pokemonmd.png"],
                 ["Star Wars Battlefront (2015)", "8.0", "./images/battlefront.png"],
@@ -97,7 +98,7 @@ module POM
 
             //this.startGame = true;
             this.correctCounter = 0;
-            document.getElementById('correct').innerHTML = "Correct Answers: " + this.correctCounter;
+            document.getElementById('correct').innerHTML = "Score: " + this.correctCounter;
 
             this.randomize(this.gameList);
         }
@@ -126,10 +127,19 @@ module POM
                 //document.getElementById('helloMessage').innerHTML = "Incorrect";
                 document.getElementById('btnRestart').style.visibility = "visible";
                 //this.randomize(this.gameList);
+                this.checkHighscore(this.correctCounter);
             }
             document.getElementById('rating1').innerHTML = this.currGame1[1];
             document.getElementById('rating2').innerHTML = this.currGame2[1];
-            document.getElementById('correct').innerHTML = "Correct Answers: " + this.correctCounter;
+            document.getElementById('correct').innerHTML = "Score: " + this.correctCounter;
+        }
+        public checkHighscore(score: number)
+        {
+            if (score > this.highScore)
+            {
+                this.highScore = score;
+                document.getElementById('highscore').innerHTML = "Highscore: " + score;
+            }
         }
         public randomize(gameList: string[][])
         {

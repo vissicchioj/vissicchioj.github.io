@@ -86,7 +86,7 @@ module POM
             document.getElementById('btnGr').style.visibility = "visible";
             document.getElementById('btnLs').style.visibility = "visible";
             document.getElementById('btnNext').style.visibility = "hidden";
-
+            alert("IGN Rating Guessing Game! \nIn this game you will be given two games and you must guess which one has a higher rating according to IGN reviews.\nHit the game controller to go back.")
             _GameList = new GameList();
 
             _GameList.init();
